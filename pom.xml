@@ -3,49 +3,62 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.jooby</groupId>
-    <artifactId>jooby-project</artifactId>
-    <version>1.5.0</version>
-  </parent>
-
   <artifactId>hello-starter</artifactId>
-  <groupId>starter.hello</groupId>
+  <groupId>com.winj</groupId>
   <version>1.0</version>
 
-  <name>hello-starter</name>
+  <name>winj-jooby2</name>
 
   <properties>
-    <jooby.version>1.5.0</jooby.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <jooby.version>2.0.2</jooby.version>
 
     <!-- Startup class -->
-    <application.class>starter.hello.App</application.class>
+    <application.class>com.winj.App</application.class>
   </properties>
 
   <dependencies>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.26</version>
+    </dependency>
+
     <!-- Server -->
     <dependency>
-      <groupId>org.jooby</groupId>
+      <groupId>io.jooby</groupId>
       <artifactId>jooby-netty</artifactId>
+      <version>${jooby.version}</version>
     </dependency>
 
+    <!-- DataSource via HikariCP-->
     <dependency>
-      <groupId>org.jooby</groupId>
-      <artifactId>jooby-jackson</artifactId>
+        <groupId>io.jooby</groupId>
+        <artifactId>jooby-hikari</artifactId>
+        <version>${jooby.version}</version>
     </dependency>
 
-    <!-- Tests -->
+    <!-- Jdbi Module-->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+        <groupId>io.jooby</groupId>
+        <artifactId>jooby-jdbi</artifactId>
+        <version>${jooby.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jdbi</groupId>
+        <artifactId>jdbi3-sqlobject</artifactId>
+        <version>3.8.2</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
     <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>rest-assured</artifactId>
-      <scope>test</scope>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.199</version>
+        <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -55,6 +68,17 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>io.jooby</groupId>
+        <artifactId>jooby-maven-plugin</artifactId>
+        <version>${jooby.version}</version>
+        <configuration>
+        <mainClass>${application.class}</mainClass>
+        <restartExtensions>conf,properties,class</restartExtensions>
+        <sourceExtensions>java,kt</sourceExtensions>
+        <port>8080</port>
+        </configuration>
+    </plugin>
     </plugins>
   </build>
 
