@@ -3,7 +3,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>hello-starter</artifactId>
+  <artifactId>winj-jooby2</artifactId>
   <groupId>com.winj</groupId>
   <version>1.0</version>
 
@@ -31,25 +31,42 @@
       <artifactId>jooby-netty</artifactId>
       <version>${jooby.version}</version>
     </dependency>
+    
+    <dependency>
+      <groupId>io.jooby</groupId>
+      <artifactId>jooby-jackson</artifactId>
+      <version>${jooby.version}</version>
+    </dependency>
+    
+    <dependency>
+			<groupId>io.ebean</groupId>
+			<artifactId>ebean</artifactId>
+			<version>11.39.1</version>
+		</dependency>
 
-    <!-- DataSource via HikariCP-->
-    <dependency>
-        <groupId>io.jooby</groupId>
-        <artifactId>jooby-hikari</artifactId>
-        <version>${jooby.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>io.ebean</groupId>
+			<artifactId>ebean-agent</artifactId>
+			<version>11.39.1</version>
+		</dependency>
 
-    <!-- Jdbi Module-->
-    <dependency>
-        <groupId>io.jooby</groupId>
-        <artifactId>jooby-jdbi</artifactId>
-        <version>${jooby.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.jdbi</groupId>
-        <artifactId>jdbi3-sqlobject</artifactId>
-        <version>3.8.2</version>
-    </dependency>
+		<dependency>
+			<groupId>io.ebean</groupId>
+			<artifactId>ebean-querybean</artifactId>
+			<version>11.39.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.ebean.tools</groupId>
+			<artifactId>finder-generator</artifactId>
+			<version>11.34.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.avaje</groupId>
+			<artifactId>avaje-agentloader</artifactId>
+			<version>3.0.1</version>
+		</dependency>
 
     <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
     <dependency>
