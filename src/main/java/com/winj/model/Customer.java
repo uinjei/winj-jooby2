@@ -1,4 +1,4 @@
-package com.winj;
+package com.winj.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,7 +12,8 @@ public class Customer extends Model {
 	long id;
 
 	String name;
-
+	String address;
+	
 	public long getId() {
 		return id;
 	}
@@ -30,4 +31,14 @@ public class Customer extends Model {
 		this.name = name;
 		return this;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public Customer setAddress(String address) {
+		this.address = address;
+		return this;
+	}
+	
 }

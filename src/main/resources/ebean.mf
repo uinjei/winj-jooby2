@@ -1,3 +1,3 @@
-entity-packages: com.winj
-transactional-packages: com.winj.trans
-querybean-packages: org.winj
+entity-packages: com.winj.model
+transactional-packages: com.winj.model.trans
+querybean-packages: com.winj.model.query

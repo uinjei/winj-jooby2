@@ -20,3 +20,8 @@ bin
 *.versionsBackup
 pom.xml.versionsBackup
 jacoco.exec
+
+public/dist
+public/node
+public/node_modules
+public/target
