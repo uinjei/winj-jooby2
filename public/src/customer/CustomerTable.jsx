@@ -1,5 +1,5 @@
 import m from "mithril";
-import CustomerData from "./CustomerData";
+import { CustomerData } from "../components";
 
 export default class CustomerTable {
     

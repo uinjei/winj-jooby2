@@ -1,6 +1,6 @@
-var m = require("mithril")
+import m from "mithril"
 
-var CustomerData = {
+const CustomerData = {
     list: [],
     loadList: function() {
         return m.request({
@@ -14,4 +14,6 @@ var CustomerData = {
     },
 }
 
-module.exports = CustomerData
+export default CustomerData;
+
+//module.exports = CustomerData

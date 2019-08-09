@@ -12,6 +12,7 @@
 	<name>winj-jooby2</name>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jooby.version>2.0.3</jooby.version>
@@ -174,27 +175,9 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<plugin>
-		        <groupId>com.github.eirslett</groupId>
-		        <artifactId>frontend-maven-plugin</artifactId>
-		        <version>1.7.6</version>
-		        <executions>
-			    	<execution>
-					    <id>npm build</id>
-					    <goals>
-					        <goal>npm</goal>
-					    </goals>
-					    <configuration>
-					        <arguments>run-script build</arguments>
-					    </configuration>
-					</execution>
-			    </executions>
-			    <configuration>
-			        <workingDirectory>public</workingDirectory>
-			    </configuration>
-		    </plugin>
 		    <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -308,7 +291,7 @@
 	
 	<profiles>
         <profile>
-            <id>frontend</id>
+            <id>webpack-start</id>
             <build>
             	<plugins>
             		<plugin>
@@ -321,13 +304,11 @@
 							    <goals>
 							        <goal>npm</goal>
 							    </goals>
-							    <configuration>
-							        <arguments>start</arguments>
-							    </configuration>
 							</execution>
 					    </executions>
 					    <configuration>
 					        <workingDirectory>public</workingDirectory>
+					        <arguments>start</arguments>
 					    </configuration>
 				    </plugin>
             	</plugins>
@@ -371,13 +352,35 @@
 					        <goals>
 						        <goal>npm</goal>
 						    </goals>
-						    <configuration>
-						        <arguments>${npm.install.args}</arguments>
-						    </configuration>
 					    	</execution>
 					    </executions>
 					    <configuration>
 					        <workingDirectory>public</workingDirectory>
+					        <arguments>${npm.install.args}</arguments>
+					    </configuration>
+				    </plugin>
+            	</plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>webpack-build</id>
+            <build>
+            	<plugins>
+            		<plugin>
+				        <groupId>com.github.eirslett</groupId>
+				        <artifactId>frontend-maven-plugin</artifactId>
+				        <version>1.7.6</version>
+				        <executions>
+					    	<execution>
+					        <id>build webpack</id>
+					        <goals>
+					            <goal>npm</goal>
+					        </goals>
+					    	</execution>
+					    </executions>
+					    <configuration>
+					   		<workingDirectory>public</workingDirectory>
+					        <arguments>run-script build</arguments>
 					    </configuration>
 				    </plugin>
             	</plugins>

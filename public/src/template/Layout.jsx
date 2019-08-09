@@ -7,11 +7,13 @@ export default class Layout {
         this.kind = "Layout"
     }
     view(vnode) {
-    	return m("div", [
-    			 m(Header),
-    			 m(Menu),
-    			 vnode.children
-    		   ])
+		return  (
+			<div>
+				<Header/>
+				<Menu/>
+				{vnode.children}
+			</div>
+		)
     }
     oncreate() {
         console.log(`A ${this.kind} was created`)

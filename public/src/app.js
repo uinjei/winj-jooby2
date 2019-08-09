@@ -1,14 +1,12 @@
 import m from "mithril";
-// import 'bootstrap';
-import Layout from "./Layout";
-import Customer from "./Customer";
+import { Layout } from "./template";
+import { CustomerPage } from "./customer";
 import Home from "./Home";
-// import './app.scss';
 
 m.route(document.body, "/", {
     "/": {
         render: function() {
-            return m(Layout, m(Customer))
+            return m(Layout, m(CustomerPage))
         },
     },
     "/home": {

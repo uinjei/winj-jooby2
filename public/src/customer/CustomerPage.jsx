@@ -7,10 +7,12 @@ export default class Customer {
         this.kind = "Customer"
     }
     view() {
-         return m('div', [
-        	 m(CustomerForm),
-        	 m(CustomerTable)
-         ])
+         return (
+			<div>
+				<CustomerForm/>
+				<CustomerTable/>
+			</div>
+		 )
     }
     oncreate() {
         console.log(`A ${this.kind} was created`)
